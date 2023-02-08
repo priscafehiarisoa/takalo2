@@ -137,15 +137,16 @@ if(!isset($liste)) $liste=array();
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                     </div>
                                     <div class="cart">
-                                        <?php if(isset($type) && $type=1){?>
-                                        <a href="<?php echo "object_controler/echangerPartie1/".$liste[$i]->idObjet;?>">echanger</a>
-                                        <?php }  elseif(isset($type) && $type=2) {
+                                        <?php if(isset($type)  && $type== 1){?>
+
+                                        <a href="<?php echo site_url("objet_controler/echangerPartie1/".$liste[$i]->idObjet);?>">echanger</a>
+                                        <?php }  elseif(isset($type) && $type== 2) {
                                             $idObjetAjoute=isset($objetAjoute)?$objetAjoute : 1;
                                             ?>
 
-                                            <a href="<?php echo "object_controler/echangerPartie2/".$idObjetAjoute."/".$liste[$i]->idObjet;?>">echanger contre</a>
+                                            <a href="<?php echo site_url("objet_controler/echangerPartie2/".$idObjetAjoute."/".$liste[$i]->idObjet);?>">echanger contre</a>
 
-                                        <?php }  elseif(isset($type) && $type=1) {?>
+                                        <?php }  elseif(isset($type) && $type==0) {?>
                                         <?php } ?>
                                     </div>
                                 </div>

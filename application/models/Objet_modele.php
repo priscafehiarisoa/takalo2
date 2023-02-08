@@ -130,7 +130,8 @@ class Objet_modele extends CI_Model
     public function getUserByObjectId($idObject)
     {
         $sql="select * from utilisateur join objet_proprietaire op on utilisateur.idUtilisateur = op.idUtilisateur where idObjet=$idObject";
-//        $sql=sprintf($sql, $this->db->escape($utilisateur2));
+       $sql=sprintf($sql, $this->db->escape($idObject));
+        echo $sql;
         $req=$this->db->query($sql);
         $table=array();
         $i=0;
@@ -149,10 +150,12 @@ class Objet_modele extends CI_Model
     }
     public function insertHistorique($idObject1 , $idobject2, $idUser1, $iduser2, $etatEchange)
     {
-        $query = "insert into historique_echange 
+        $sql = "insert into historique_echange 
     (idHistorique, idObjet1, idObjet2, idUtilisateur1, idUtilisateur2, etatEchange, dateEchange)
-    values (null,$idObject1, $idobject2, $idUser1, $iduser2, $etatEchange, now() ) ";
-        $this->db->query($query);
+    values (null,$idObject1,$idobject2,$idUser1,$iduser2,0, now() ) ";
+      //  $sql = sprintf($sql,$this->db->escape($idObject1),$this->db->escape($idobject2),$this->db->escape($idUser1),$this->db->escape($iduser2),$this->db->escape($etatEchange));
+        echo $sql;
+        $this->db->query($sql);
     }
 
 }

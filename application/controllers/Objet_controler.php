@@ -25,6 +25,7 @@ class Objet_controler extends CI_Controller
 
     public function ListeObjetPersonnelUser($idUser, $idObjetAjoute,$type)
     {
+        echo 'AAAA';
         $liste=$this->mod->listObjectbyId($idUser);
         $res['liste']=$liste;
         $res['type']=$type;
@@ -62,18 +63,21 @@ class Objet_controler extends CI_Controller
 
         $obj['objet1']=$idObject;
         $objet=$this->mod->getUserByObjectId($idObject);
-        $obj['user']=$objet[0];
+        $obj['user']=$objet;
         $user=$_SESSION['utilisateur'];
-        $id=$user['utilisateur']['idUtilisateur'];
-        $url="objet_controler/ListeObjetPersonnelUser/$id/$idObject/2";
-        redirect($url);
-        echo "echange 1 ". $objet[0]->nom;
+        $id=$user['idUtilisateur'];
+        $this->ListeObjetPersonnelUser($id,$idObject,2);
+        //$url="ListeObjetPersonnelUser/$id/$idObject/2";
+        //redirect($url);
+
     }
     public function echangerPartie2($idObjet1, $idObjet2)
     {
-        $objet1=$this->mod->getUserByObjectId($idObjet1)[0];
-        $objet2=$this->mod->getUserByObjectId($idObjet2)[0];
-        $this->mod->insertHistorique($objet1->idObjet, $objet2->idObjet, $objet1->idUtilisateur, $objet2->idUtilisateur,0  );
+        $objet1=$this->mod->getUserByObjectId($idObjet1);
+        echo $objet1[0]->idObjet;
+        $objet2=$this->mod->getUserByObjectId($idObjet2);
+        echo $objet2[0]->idObjet;
+        $this->mod->insertHistorique($objet1[0]->idObjet, $objet2[0]->idObjet, $objet1[0]->idUtilisateur, $objet2[0]->idUtilisateur,0  );
         echo "vita";
     }
 }
