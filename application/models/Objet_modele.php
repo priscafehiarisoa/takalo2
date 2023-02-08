@@ -141,7 +141,12 @@ class Objet_modele extends CI_Model
         }
         return $table;
     }
-
+    public function insertObjet($objet,$idc,$image,$prix){
+        $sql = "INSERT INTO OBJET VALUES (NULL,%s,%s,%s,%s)";
+        $sql = sprintf($sql,$this->db->escape($idc),$this->db->escape($objet),$this->db->escape($image),$this->db->escape($prix));
+        echo $sql;
+        $this->db->query($sql);
+    }
     public function insertHistorique($idObject1 , $idobject2, $idUser1, $iduser2, $etatEchange)
     {
         $query = "insert into historique_echange 

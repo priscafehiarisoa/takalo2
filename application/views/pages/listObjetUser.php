@@ -166,7 +166,7 @@ if(!isset($liste)) $liste=array();
 <?php $this->load->view('inc/footer')?>
 <!-- ##### Footer Area End ##### -->
 <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-<script src="<?php  echo base_url("js/jquery/jquery-2.2.4.min.js"); ?> "></script>
+<script src="<?php  echo base_url("assets/js/jquery/jquery-2.2.4.min.js"); ?> "></script>
 <!-- Popper js -->
 <script src="<?php  echo base_url("assets/js/popper.min.js"); ?> "></script>
 <!-- Bootstrap js -->

@@ -88,14 +88,33 @@ class Welcome extends CI_Controller {
            redirect($url);
      }
 //-----------------------------------------------FORM_USER---------------------------------------------------------//
+//AJOUT
+    public function ajout(){
+        $this->load->model('Objet_categorie');
+        $liste = $this->Objet_categorie->listCategorie();
+        $res['categ']=$liste;
+        $this->load->view('pages/formulaireAjout',$res);
+    }
 //Upload
     public function photo(){$this->load->view('pages/photo');}
 //photo
     public function do_upload(){
-        $this->load->model('Photo');
-        $nb = $_POST['nb'];
-        $dossier = base_url("upload/");
+        //utilisateur
+        $user = array();
+        $user = $_SESSION['utilisateur'];
+        //objet
+        $objet = $_POST['objet'];
+        $prix = $_POST['prix'];
+        $nb = $_POST['nombre'];
+        $idc = $_POST['categorie'];
+        echo $objet;
+        echo
+        //upload
+
+        $nb = $_POST['nombre'];
+        $dossier = "upload/";
         $fichier = basename($_FILES['avatar']['name']);
+        $image = $fichier;
         $taille_maxi = 100000;
         $tmp = $_FILES['avatar']['tmp_name'];
         $taille_maxi = 100000;
@@ -120,6 +139,8 @@ class Welcome extends CI_Controller {
             {
                 $data = array('upload_data' => $this->upload->data());
                 echo  "ok";
+                $this->load->model('Objet_modele');
+                $liste = $this->Objet_modele->insertObjet($objet,$idc,$image,$prix);
                 //traiter les données de l'upload
             }
 

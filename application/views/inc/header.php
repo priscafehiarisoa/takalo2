@@ -11,9 +11,10 @@
     </div>
     <nav class="amado-nav">
         <ul>
-            <li><a href="<?php echo site_url('objet_controler/index/');?>">accueil</a></li>
+            <li><a href="<?php echo site_url('welcome/accueil/');?>">accueil</a></li>
             <li class="active"><a href="<?php echo site_url('welcome/echange/');?>">echanges </a></li>
             <li><a href="<?php echo site_url('welcome/produit/');?>">VOS PRODUITS</a></li>
+            <li><a href="<?php echo site_url('welcome/ajout/');?>">AJOUT PRODUITS</a></li>
         </ul>
     </nav>
     <!-- Social Button -->
