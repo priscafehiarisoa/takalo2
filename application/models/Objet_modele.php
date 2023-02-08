@@ -73,7 +73,8 @@ class Objet_modele extends CI_Model
      {
 //         objet 1-> le utilisateur mandefa demande
 //          objet 2-> le utilisateur andefasana demande
-         $liste=$this->db->query(" select o1.objet as objet1 ,  o2.objet as objet2 ,  o1.image as image1 ,  o2.image as image2 , ut1.email as nom1, ut2.email as nom2 from historique_echange hist
+         $liste=$this->db->query(" select o1.idObjet as idObjet1 , o2.idObjet as idObjet2,ut1.idUtilisateur as idUtilisateur1 , ut2.idUtilisateur as idUtilisateur2,o1.objet as objet1 ,  o2.objet as objet2 ,  o1.image as image1 ,  o2.image as image2 , ut1.email as nom1, ut2.email as nom2 
+        from historique_echange hist
         join objet  o1  on hist.idObjet1=o1.idObjet 
         join objet  o2 on hist.idObjet2= o2.idObjet
         join utilisateur ut1 on hist.idUtilisateur1= ut1.idUtilisateur
@@ -92,7 +93,8 @@ class Objet_modele extends CI_Model
     {
 //         objet 1-> le utilisateur mandefa demande
 //          objet 2-> le utilisateur andefasana demande
-            $liste=$this->db->query(" select o1.objet as objet1 ,  o2.objet as objet2 ,  o1.image as image1 ,  o2.image as image2 , ut1.email as nom1, ut2.email as nom2 from historique_echange hist
+            $liste=$this->db->query(" select o1.idObjet as idObjet1 , o2.idObjet as idObjet2,ut1.idUtilisateur as idUtilisateur1 , ut2.idUtilisateur as idUtilisateur2,o1.objet as objet1 ,  o2.objet as objet2 ,  o1.image as image1 ,  o2.image as image2 , ut1.email as nom1, ut2.email as nom2 
+        from historique_echange hist
         join objet  o1  on hist.idObjet1=o1.idObjet 
         join objet  o2 on hist.idObjet2= o2.idObjet
         join utilisateur ut1 on hist.idUtilisateur1= ut1.idUtilisateur
@@ -110,7 +112,8 @@ class Objet_modele extends CI_Model
 
     public function listeDemandeRefuse($utilisateur2)
     {
-        $sql = "select o1.objet as objet1 ,  o2.objet as objet2 ,  o1.image as image1 ,  o2.image as image2 , ut1.email as nom1, ut2.email as nom2 from historique_echange hist
+        $sql = "select o1.idObjet as idObjet1 , o2.idObjet as idObjet2,ut1.idUtilisateur as idUtilisateur1 , ut2.idUtilisateur as idUtilisateur2,o1.objet as objet1 ,  o2.objet as objet2 ,  o1.image as image1 ,  o2.image as image2 , ut1.email as nom1, ut2.email as nom2 
+        from historique_echange hist
         join objet  o1  on hist.idObjet1=o1.idObjet 
         join objet  o2 on hist.idObjet2= o2.idObjet
         join utilisateur ut1 on hist.idUtilisateur1= ut1.idUtilisateur
@@ -131,7 +134,7 @@ class Objet_modele extends CI_Model
     {
         $sql="select * from utilisateur join objet_proprietaire op on utilisateur.idUtilisateur = op.idUtilisateur where idObjet=$idObject";
        $sql=sprintf($sql, $this->db->escape($idObject));
-        echo $sql;
+
         $req=$this->db->query($sql);
         $table=array();
         $i=0;
@@ -155,5 +158,5 @@ class Objet_modele extends CI_Model
     values (null,$idObject1,$idobject2,$idUser1,$iduser2,0, now() ) ";
         $this->db->query($sql);
     }
-
+///------------ACCEPTER
 }

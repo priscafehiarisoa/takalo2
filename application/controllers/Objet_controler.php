@@ -74,7 +74,6 @@ class Objet_controler extends CI_Controller
         echo $objet1[0]->idObjet;
         $objet2=$this->mod->getUserByObjectId($idObjet2);
         echo $objet2[0]->idObjet;
-        $this->mod->insertHistorique($objet1[0]->idObjet, $objet2[0]->idObjet, $objet1[0]->idUtilisateur, $objet2[0]->idUtilisateur,0  );
-        echo "vita";
+        $this->mod->insertHistorique($objet2[0]->idObjet,$objet1[0]->idObjet ,$objet2[0]->idUtilisateur ,  $objet1[0]->idUtilisateur,0  );
     }
 }
