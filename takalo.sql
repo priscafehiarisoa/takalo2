@@ -1,7 +1,7 @@
---DATABASE
-        create database takalo;
-        use takalo;
-----UTILISATEUR
+#--DATABASE
+   /*     create database takalo;
+        use takalo;*/
+# ----UTILISATEUR
             create table utilisateur (
                 idUtilisateur INTEGER(50) PRIMARY KEY auto_increment,
                 nom VARCHAR (10)  DEFAULT 'koto',
@@ -11,7 +11,7 @@
             );
             insert into utilisateur values (null,'ranto','ranto@gmail.com','11111',1);
 
-----CATEGORIES
+# ----CATEGORIES
         create table categories (
             idCategories INTEGER(50) PRIMARY KEY auto_increment,
             descCategories VARCHAR (50) NOT NULL
@@ -19,32 +19,33 @@
         insert into categories values (null,'meubles');
         insert into categories values (null,'ustensiles');
         insert into categories values (null,'tissus');
-----OBJET
+# ----OBJET
         create table objet (
             idObjet INTEGER(50) PRIMARY KEY auto_increment,
             idCategories INTEGER(50) references categories (idCategories),
             objet VARCHAR (50) NOT NULL,
-            prix decimal(7,2)
+            prix decimal(7,2),
+            image varchar(100)
         );
-        insert into objet values (null,1,'canape',2000);
-        insert into objet values (null,1,'pouf',1000);
-        insert into objet values (null,2,'table',6000);
-        insert into objet values (null,2,'armoire',7500);
+        insert into objet values (null,1,'canape',2000,'1.jpg');
+        insert into objet values (null,1,'pouf',1000,'2.jpg');
+        insert into objet values (null,2,'table',6000,'3.jpg');
+        insert into objet values (null,2,'armoire',7500,'4.jpg');
 
-        insert into objet values (null,2,'louche',6000);
-        insert into objet values (null,2,'marmite',1200);
+        insert into objet values (null,2,'louche',6000,'5.jpg');
+        insert into objet values (null,2,'marmite',1200,'6.jpg');
 
-        insert into objet values (null,2,'rideau',3000);
-        insert into objet values (null,2,'robe',500);
-        insert into objet values (null,2,'nappe de table',1300);
-----IMAGES
+        insert into objet values (null,2,'rideau',3000,'7.jpg');
+        insert into objet values (null,2,'robe',500,'8.jpg');
+        insert into objet values (null,2,'nappe de table',1300,'9.jpg');
+# ----IMAGES
         create table Images (
             idImage INTEGER(50) PRIMARY KEY auto_increment,
             idObjet INTEGER(50) references categories (idCategories),
             nomImage VARCHAR (50) NOT NULL
         );
         insert into Images values (null,1,'1.jpg');
-        insert into Images values (null,1,);
+        insert into Images values (null,1,'1.jpg');
 
         insert into Images values (null,2,'3.jpg');
         insert into Images values (null,2,'3.jpg');
@@ -69,8 +70,8 @@
         insert into Images values (null,9,'b6');
         insert into Images values (null,9,'b7');
 
-----OBJET_PROPRIETAIRE
-       create table2,2,1,0(
+# ----OBJET_PROPRIETAIRE
+       create table objet_proprietaire(
            idObjet  INTEGER(50) references categories (idCategories),
            idUtilisateur  INTEGER(50) references categories (idCategories)
        );
@@ -83,14 +84,14 @@
        insert into objet_proprietaire values (7,3);
        insert into objet_proprietaire values (8,2);
        insert into objet_proprietaire values (9,2);
---VUES
+# --VUES
        select op.idObjet idObjet, c.idCategories idCategorie,
        descCategories descriptionCategorie, prix, u.idUtilisateur idUtilisateur, u.nom nomUtilisateur
        from objet
        join objet_proprietaire op on objet.idObjet = op.idObjet
        join utilisateur u on op.idUtilisateur = u.idUtilisateur
        join categories c on objet.idCategories = c.idCategories;
----- HISTORIQ ECHANGE
+# ---- HISTORIQ ECHANGE
         create table historique_echange
         (
             idHistorique   int auto_increment primary key,

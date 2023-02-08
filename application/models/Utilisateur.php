@@ -31,6 +31,19 @@ class Utilisateur extends CI_Model{
         }
         return $tab;
     }
+    public function countUser()
+    {
+        $sql="select count(idUtilisateur) isa from utilisateur ";
+        $count=$this->db->query($sql);
+        $isa=0;
+        foreach ($count->result_array() as $c)
+        {
+            $isa=$c['isa'];
+        }
+        return $isa;
+    }
+
+
 }
 ?>
 
