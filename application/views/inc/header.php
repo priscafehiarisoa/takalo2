@@ -23,4 +23,7 @@
         <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
         <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
     </div>
+    <div class="cart-fav-search mb-100">
+        <a href="#" class="search-nav"><img src="img/core-img/search.png" alt=""> Search</a>
+    </div>
 </header>

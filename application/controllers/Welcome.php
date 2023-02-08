@@ -76,7 +76,7 @@ class Welcome extends CI_Controller {
         $user = array();
         $user = $_SESSION['utilisateur'];
         echo $user['nom'];
-        $url="objet_controler/ListeObjetPersonnelUtilisateur/".$user['idUtilisateur'];
+        $url="objet_controler/ListeObjetPersonnelUtilisateur/".$user['idUtilisateur']."/0";
         redirect($url);
     }
 //MES ECHANGES

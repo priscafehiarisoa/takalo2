@@ -15,17 +15,32 @@ class Objet_controler extends CI_Controller
 
 //    controleur mi-rediriger any @ liste an'ny objet personnel an'le utilisateur
 
-    public function ListeObjetPersonnelUtilisateur($id)
+    public function ListeObjetPersonnelUtilisateur($id, $type)
     {
         $liste=$this->mod->listObjectbyId($id);
         $res['liste']=$liste;
+        $res['type']=$type;
         $this->load->view('pages/listObjetUser',$res);
     }
 
+    public function ListeObjetPersonnelUser($idUser, $idObjetAjoute,$type)
+    {
+        $liste=$this->mod->listObjectbyId($idUser);
+        $res['liste']=$liste;
+        $res['type']=$type;
+        $res['objetAjoute']=$idObjetAjoute;
+        $this->load->view('pages/listObjetUser',$res);
+    }
+
+
     public function ListeObjetAutresUtilisateurs($id)
     {
+//        0 -> liste aures users de misy an'le bouton echanger
+//        1-> liste des objet possedes par l'utilisateur tsisy bouton echanger
+//        2-. liste des objets possedes avec bouton echanger
         $liste=$this->mod->listObjectWithoutThisId($id);
         $res['liste']=$liste;
+        $res['type']=1;
         $this->load->view('pages/listObjetUser',$res);
     }
 
@@ -42,4 +57,23 @@ class Objet_controler extends CI_Controller
 
 //    gestion des listes etat objet
 
+    public function echangerPartie1($idObject)
+    {
+
+        $obj['objet1']=$idObject;
+        $objet=$this->mod->getUserByObjectId($idObject);
+        $obj['user']=$objet[0];
+        $user=$_SESSION['utilisateur'];
+        $id=$user['utilisateur']['idUtilisateur'];
+        $url="objet_controler/ListeObjetPersonnelUser/$id/$idObject/2";
+        redirect($url);
+        echo "echange 1 ". $objet[0]->nom;
+    }
+    public function echangerPartie2($idObjet1, $idObjet2)
+    {
+        $objet1=$this->mod->getUserByObjectId($idObjet1)[0];
+        $objet2=$this->mod->getUserByObjectId($idObjet2)[0];
+        $this->mod->insertHistorique($objet1->idObjet, $objet2->idObjet, $objet1->idUtilisateur, $objet2->idUtilisateur,0  );
+        echo "vita";
+    }
 }

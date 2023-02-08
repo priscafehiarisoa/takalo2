@@ -137,7 +137,16 @@ if(!isset($liste)) $liste=array();
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                     </div>
                                     <div class="cart">
-                                        <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="../assets/img/core-img/cart.png" alt=""></a>
+                                        <?php if(isset($type) && $type=1){?>
+                                        <a href="<?php echo "object_controler/echangerPartie1/".$liste[$i]->idObjet;?>">echanger</a>
+                                        <?php }  elseif(isset($type) && $type=2) {
+                                            $idObjetAjoute=isset($objetAjoute)?$objetAjoute : 1;
+                                            ?>
+
+                                            <a href="<?php echo "object_controler/echangerPartie2/".$idObjetAjoute."/".$liste[$i]->idObjet;?>">echanger contre</a>
+
+                                        <?php }  elseif(isset($type) && $type=1) {?>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>

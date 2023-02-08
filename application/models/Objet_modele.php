@@ -126,5 +126,28 @@ class Objet_modele extends CI_Model
         }
         return $table;
     }
+    //    added
+    public function getUserByObjectId($idObject)
+    {
+        $sql="select * from utilisateur join objet_proprietaire op on utilisateur.idUtilisateur = op.idUtilisateur where idObjet=$idObject";
+//        $sql=sprintf($sql, $this->db->escape($utilisateur2));
+        $req=$this->db->query($sql);
+        $table=array();
+        $i=0;
+        foreach ($req->result() as $r)
+        {
+            $table[$i]=$r;
+            $i++;
+        }
+        return $table;
+    }
+
+    public function insertHistorique($idObject1 , $idobject2, $idUser1, $iduser2, $etatEchange)
+    {
+        $query = "insert into historique_echange 
+    (idHistorique, idObjet1, idObjet2, idUtilisateur1, idUtilisateur2, etatEchange, dateEchange)
+    values (null,$idObject1, $idobject2, $idUser1, $iduser2, $etatEchange, now() ) ";
+        $this->db->query($query);
+    }
 
 }
