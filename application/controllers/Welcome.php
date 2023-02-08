@@ -38,14 +38,19 @@ class Welcome extends CI_Controller {
         }else{
             $user = array();
             $user =  $this->Utilisateur->checkConnected($_POST['email'],$_POST['password']);
-            $this->session->set_userdata('utilisateur',$user);
-            redirect('welcome/accueil/');
+            if($user['type'] == 0){
+                $this->session->set_userdata('admin', $user);
+                redirect('welcome/dashboardAdmin/');
+            }else {
+                $this->session->set_userdata('utilisateur', $user);
+                redirect('welcome/accueil/');
+            }
         }
 	}
 //Fonction Deconnexion
 	public function deconnect()	{
         $this->session->unset_userdata('utilisateur');
-        redirect('welcome/');
+        $this->load->view('index');
     }
 //Fonction erreur de Login
     public function errorLogin(){
@@ -87,6 +92,57 @@ class Welcome extends CI_Controller {
            $url="objet_controler/pageDetailEchanges/".$user['idUtilisateur'];
            redirect($url);
      }
+//ACCEPTER
+    public function accept(){
+        $this->load->model('Objet_modele','mod');
+        $idh = $_GET['idH'];
+        $ob1=$_GET['ido1'];
+        $ob2=$_GET['ido2'];
+        $u1=$_GET['idu1'];
+        $u2=$_GET['idu2'];
+
+        $objet1=$this->mod->getUserByHistoId($idh);
+        $id = $objet1[0]->idHistorique;
+        $this->mod->updateAccept($id);
+        $this->mod->updateOP($u1,$ob1,$u2);
+        $this->mod->updateOP($u2,$ob2,$u1);
+        $this->echange();
+
+    }
+//REFUSER
+    public function refus(){
+        $this->load->model('Objet_modele','mod');
+        $idh = $_GET['idH'];
+
+        $objet1=$this->mod->getUserByHistoId($idh);
+        $id = $objet1[0]->idHistorique;
+        $this->mod->updateRefus($id);
+        $this->echange();
+
+    }
+//DASHBOARD
+    public function dashboardAdmin(){
+        $user = array();
+        $user = $_SESSION['admin'];
+        $this->load->model('Utilisateur');
+        $isa['isa']= $this->Utilisateur->countUser();
+        $isa['echange']= $this->Utilisateur->countEchange();
+        $this->load->view('pages/ajoutCategorie',$isa);
+
+    }
+//listeUtilisateur
+    public function listeUtilisateur(){
+        $this->load->model('Utilisateur');
+        $userA['all']= $this->Utilisateur->listeUtilisateurAvecNombreEchange();
+        $this->load->view('pages/listUser',$userA);
+    }
+//AJOUT CATEG
+    public function ajoutCateg(){
+        $categ = $_POST['categorie'];
+        $this->load->model('Objet_categorie');
+        $liste = $this->Objet_categorie->insertCategorie($categ);
+        $this->load->view('pages/ajoutCategorie');
+    }
 //-----------------------------------------------FORM_USER---------------------------------------------------------//
 //AJOUT
     public function ajout(){
@@ -107,8 +163,6 @@ class Welcome extends CI_Controller {
         $prix = $_POST['prix'];
         $nb = $_POST['nombre'];
         $idc = $_POST['categorie'];
-        echo $objet;
-        echo
         //upload
 
         $nb = $_POST['nombre'];
@@ -138,9 +192,13 @@ class Welcome extends CI_Controller {
             else
             {
                 $data = array('upload_data' => $this->upload->data());
-                echo  "ok";
+                //echo  "ok";
                 $this->load->model('Objet_modele');
                 $liste = $this->Objet_modele->insertObjet($objet,$idc,$image,$prix);
+                $this->load->model('Objet_categorie');
+                $liste = $this->Objet_categorie->listCategorie();
+                $res['categ']=$liste;
+                $this->load->view('pages/formulaireAjout',$res);
                 //traiter les données de l'upload
             }
 

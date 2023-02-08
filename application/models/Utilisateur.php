@@ -42,6 +42,42 @@ class Utilisateur extends CI_Model{
         }
         return $isa;
     }
+    public function countEchange()
+    {
+        $sql="select count(idHistorique) isa from historique_echange where  etatEchange=1;";
+        $query=$this->db->query($sql);
+        $isa=0;
+        foreach ($query->result_array() as $r)
+        {
+            $isa=$r['isa'];
+        }
+        return $isa;
+    }
+    public function countechangeByUser($idUser )
+    {
+        $sql="select count(idHistorique) isa from historique_echange where (idUtilisateur2= $idUser or idUtilisateur1 = $idUser) and etatEchange=1;";
+        $query=$this->db->query($sql);
+        $isa=0;
+        foreach ($query->result_array() as $r)
+        {
+            $isa=$r['isa'];
+        }
+        return $isa;
+
+    }
+    public function listeUtilisateurAvecNombreEchange(){
+    $sql="select idUtilisateur, nom, coalesce(count(idHistorique),0) nombreEchange from utilisateur left outer join historique_echange he on utilisateur.idUtilisateur = he.idUtilisateur1 or utilisateur.idUtilisateur = he.idUtilisateur2 where etatEchange = 1 group by idUtilisateur ";
+    $query=$this->db->query($sql);
+    $isa=0;
+    $table=array();
+    $i=0;
+    foreach ($query->result_array() as $r)
+    {
+        $array[$i]=$r;
+        $i++;
+    }
+    return $array;
+}
 
 
 }

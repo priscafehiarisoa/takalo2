@@ -71,9 +71,10 @@ class Objet_controler extends CI_Controller
     public function echangerPartie2($idObjet1, $idObjet2)
     {
         $objet1=$this->mod->getUserByObjectId($idObjet1);
-        echo $objet1[0]->idObjet;
+        //echo $objet1[0]->idObjet;
         $objet2=$this->mod->getUserByObjectId($idObjet2);
-        echo $objet2[0]->idObjet;
+        //echo $objet2[0]->idObjet;
         $this->mod->insertHistorique($objet2[0]->idObjet,$objet1[0]->idObjet ,$objet2[0]->idUtilisateur ,  $objet1[0]->idUtilisateur,0  );
+        redirect('welcome/echange/');
     }
 }

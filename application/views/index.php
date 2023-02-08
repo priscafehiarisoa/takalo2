@@ -37,16 +37,16 @@
                         <form action="<?php echo site_url('welcome/checkutilisateur/');?>" method="post">
                             <div class="row">
                                 <div class="col-12 mb-3">
-                                    <input type="email" class="form-control" name="email" placeholder="Email" value="">
+                                    <input type="email" class="form-control" name="email" placeholder="Email" value="ranto@gmail.com">
                                 </div>
                                 <div class="col-12 mb-3">
-                                    <input type="password" class="form-control" name="password" placeholder="Mot de passe" value="">
+                                    <input type="password" class="form-control" name="password" placeholder="Mot de passe" value="11111">
                                 </div>
                                 <div class="amado-btn-group mt-32 mb-150 oui">
                                     <button class="btn amado-btn mb-15" type="submit">Se connecter</button>
                                 </div>
                                 <div class="col-12">
-                                    <a class="maClasse" href="<?php echo  base_url("welcome/subscribe/"); ?> ">Créer un compte</a>
+                                    <a class="maClasse" href="<?php echo  site_url("welcome/subscribe/"); ?> ">Créer un compte</a>
                                 </div>
                                 <?php if(isset($erreur)){ ?>
                                     <div class="alert alert-danger " role="alert"><?php echo $erreur; ?></div>
@@ -63,25 +63,7 @@
 <!-- ##### Main Content Wrapper End ##### -->
 
 <!-- ##### Footer Area Start ##### -->
-<footer class="footer_area clearfix">
-    <div class="container">
-        <div class="row align-items-center">
-            <!-- Single Widget Area -->
-            <div class="col-12 col-lg-4">
-                <div class="single_widget_area">
-                    <!-- Logo -->
-                    <div class="footer-logo mr-50">
-                        <a href="accueil.html"><img src="<?php echo site_url("assets/img/core-img/logo2.png"); ?>" alt=""></a>
-                    </div>
-                    <!-- Copywrite Text -->
-                    <p class="copywrite"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> & Re-distributed by <a href="https://themewagon.com/" target="_blank">Themewagon</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+<?php $this->load->view('inc/footer')?>
 <!-- ##### Footer Area End ##### -->
 
 <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->

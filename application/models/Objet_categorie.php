@@ -16,7 +16,8 @@ class Objet_categorie extends CI_Model{
     ///INSERT categ
      public function insertCategorie($categ)
         {
-            $sql = "insert into categories  values (null,$categ) ";
+            $sql = "insert into categories  values (null,%s) ";
+            $sql = sprintf($sql,$this->db->escape($categ));
             $this->db->query($sql);
         }
 }
