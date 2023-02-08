@@ -110,3 +110,10 @@
         insert into  historique_echange values (null,3,8,1,2,0,'2023-02-05');
 
         insert into  historique_echange values (null,4,6,3,1,0,'2023-02-05');
+
+Select * from historique_echange where etatEchange=1;
+select idUtilisateur, nom, coalesce(count(idHistorique),0) nombreEchange
+from utilisateur left outer join historique_echange he on utilisateur.idUtilisateur = he.idUtilisateur1
+     or utilisateur.idUtilisateur = he.idUtilisateur2 group by idUtilisateur;
+select * from utilisateur left outer join historique_echange he
+    on utilisateur.idUtilisateur = he.idUtilisateur1 or utilisateur.idUtilisateur = he.idUtilisateur2

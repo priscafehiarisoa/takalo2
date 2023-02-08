@@ -80,6 +80,7 @@ class Utilisateur extends CI_Model{
 }
 
 
+
 }
 ?>
 
