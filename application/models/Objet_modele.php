@@ -153,8 +153,6 @@ class Objet_modele extends CI_Model
         $sql = "insert into historique_echange 
     (idHistorique, idObjet1, idObjet2, idUtilisateur1, idUtilisateur2, etatEchange, dateEchange)
     values (null,$idObject1,$idobject2,$idUser1,$iduser2,0, now() ) ";
-      //  $sql = sprintf($sql,$this->db->escape($idObject1),$this->db->escape($idobject2),$this->db->escape($idUser1),$this->db->escape($iduser2),$this->db->escape($etatEchange));
-        echo $sql;
         $this->db->query($sql);
     }
 

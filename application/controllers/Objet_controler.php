@@ -25,7 +25,6 @@ class Objet_controler extends CI_Controller
 
     public function ListeObjetPersonnelUser($idUser, $idObjetAjoute,$type)
     {
-        echo 'AAAA';
         $liste=$this->mod->listObjectbyId($idUser);
         $res['liste']=$liste;
         $res['type']=$type;
@@ -67,8 +66,6 @@ class Objet_controler extends CI_Controller
         $user=$_SESSION['utilisateur'];
         $id=$user['idUtilisateur'];
         $this->ListeObjetPersonnelUser($id,$idObject,2);
-        //$url="ListeObjetPersonnelUser/$id/$idObject/2";
-        //redirect($url);
 
     }
     public function echangerPartie2($idObjet1, $idObjet2)
