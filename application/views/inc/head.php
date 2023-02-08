@@ -17,7 +17,7 @@
     <link rel="icon" href="<?php echo "http://localhost/TAKALO2/ci306/assets/img/core-img/favicon.ico"; ?> ">
 
     <!-- Core Style CSS -->
-    <link rel="stylesheet" href="<?php echo   site_url("assets/css/core-style.css"); ?>">
-    <link rel="stylesheet" href="<?php  echo site_url("assets/css/style.css"); ?> ">
+    <link rel="stylesheet" href="<?php echo   base_url("assets/css/core-style.css"); ?>">
+    <link rel="stylesheet" href="<?php  echo base_url("assets/css/style.css"); ?> ">
 
 </head>

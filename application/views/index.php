@@ -15,8 +15,8 @@
     <link rel="icon" href="<?php echo "http://localhost/TAKALO2/ci306/assets/img/core-img/favicon.ico"; ?> ">
 
     <!-- Core Style CSS -->
-    <link rel="stylesheet" href="<?php echo   site_url("assets/css/core-style.css"); ?>">
-    <link rel="stylesheet" href="<?php  echo site_url("assets/css/style.css"); ?> ">
+    <link rel="stylesheet" href="<?php echo   base_url("assets/css/core-style.css"); ?>">
+    <link rel="stylesheet" href="<?php  echo base_url("assets/css/style.css"); ?> ">
 
 </head>
 
@@ -34,7 +34,7 @@
                             <h2>Se connecter</h2>
                         </div>
 
-                        <form action="<?php echo base_url('welcome/checkutilisateur/');?>" method="post">
+                        <form action="<?php echo site_url('welcome/checkutilisateur/');?>" method="post">
                             <div class="row">
                                 <div class="col-12 mb-3">
                                     <input type="email" class="form-control" name="email" placeholder="Email" value="">
@@ -85,15 +85,15 @@
 <!-- ##### Footer Area End ##### -->
 
 <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-<script src="<?php  echo site_url("js/jquery/jquery-2.2.4.min.js"); ?> "></script>
+<script src="<?php  echo base_url("js/jquery/jquery-2.2.4.min.js"); ?> "></script>
 <!-- Popper js -->
-<script src="<?php  echo site_url("assets/js/popper.min.js"); ?> "></script>
+<script src="<?php  echo base_url("assets/js/popper.min.js"); ?> "></script>
 <!-- Bootstrap js -->
-<script src="<?php  echo site_url("assets/js/bootstrap.min.js"); ?> "></script>
+<script src="<?php  echo base_url("assets/js/bootstrap.min.js"); ?> "></script>
 <!-- Plugins js -->
-<script src="<?php  echo site_url("assets/js/plugins.js"); ?>"></script>
+<script src="<?php  echo base_url("assets/js/plugins.js"); ?>"></script>
 <!-- Active js -->
-<script src=" <?php echo site_url("assets/js/active.js"); ?>"></script>
+<script src=" <?php echo base_url("assets/js/active.js"); ?>"></script>
 
 </body>
 

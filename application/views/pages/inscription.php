@@ -12,11 +12,11 @@
     <title>S'inscrire</title>
 
     <!-- Favicon  -->
-    <link rel="icon" href="<?php echo site_url("assets/img/core-img/favicon.ico"); ?>">
+    <link rel="icon" href="<?php echo base_url("assets/img/core-img/favicon.ico"); ?>">
 
     <!-- Core Style CSS -->
-    <link rel="stylesheet" href="<?php echo site_url("assets/css/core-style.css"); ?>">
-    <link rel="stylesheet" href="<?php echo site_url("assets/css/style.css"); ?>">
+    <link rel="stylesheet" href="<?php echo base_url("assets/css/core-style.css"); ?>">
+    <link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>">
 
 </head>
 
@@ -34,7 +34,7 @@
                             <h2>S'inscrire</h2>
                         </div>
 
-                        <form action="<?php echo base_url('welcome/inscription/');?>" method="post">
+                        <form action="<?php echo site_url('welcome/inscription/');?>" method="post">
                             <div class="row">
                                 <div class="col-12 mb-3">
                                     <input type="text" class="form-control" name="nom" placeholder="Votre nom" value="">
@@ -71,7 +71,7 @@
                 <div class="single_widget_area">
                     <!-- Logo -->
                     <div class="footer-logo mr-50">
-                        <a href="#"><img src="<?php echo site_url("assets/img/core-img/logo2.png"); ?>" alt=""></a>
+                        <a href="#"><img src="<?php echo base_url("assets/img/core-img/logo2.png"); ?>" alt=""></a>
                     </div>
                     <!-- Copywrite Text -->
                     <p class="copywrite"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -85,15 +85,15 @@
 <!-- ##### Footer Area End ##### -->
 
 <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-<script src="<?php echo site_url("assets/js/jquery/jquery-2.2.4.min.js"); ?>"></script>
+<script src="<?php echo base_url("assets/js/jquery/jquery-2.2.4.min.js"); ?>"></script>
 <!-- Popper js -->
-<script src="<?php echo site_url("assets/js/popper.min.js"); ?>"></script>
+<script src="<?php echo base_url("assets/js/popper.min.js"); ?>"></script>
 <!-- Bootstrap js -->
-<script src="<?php echo site_url("assets/js/bootstrap.min.js"); ?>"></script>
+<script src="<?php echo base_url("assets/js/bootstrap.min.js"); ?>"></script>
 <!-- Plugins js -->
-<script src="<?php echo site_url("assets/js/plugins.js"); ?>"></script>
+<script src="<?php echo base_url("assets/js/plugins.js"); ?>"></script>
 <!-- Active js -->
-<script src="<?php echo site_url("assets/js/active.js"); ?>"></script>
+<script src="<?php echo base_url("assets/js/active.js"); ?>"></script>
 
 </body>
 

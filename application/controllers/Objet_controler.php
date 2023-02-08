@@ -19,7 +19,7 @@ class Objet_controler extends CI_Controller
     {
         $liste=$this->mod->listObjectbyId($id);
         $res['liste']=$liste;
-        $this->load->view('test',$res);
+        $this->load->view('pages/listObjetUser',$res);
     }
 
     public function ListeObjetAutresUtilisateurs($id)
@@ -33,11 +33,11 @@ class Objet_controler extends CI_Controller
     {
         $recu=$this->mod->listeDemandeEchangeRecu($idUtilisateur);
         $envoye=$this->mod->listeDemandeEchangeEnvoye($idUtilisateur);
-        $refuse=$this->mod->listeDemandeRefuse($idUtilisateur);
+        $refus=$this->mod->listeDemandeRefuse($idUtilisateur);
         $result['recu']=$recu;
         $result['envoye']=$envoye;
-        $result['refuse']=$refuse;
-        $this->load->view('test',$result);
+        $result['refus']=$refus;
+        $this->load->view('pages/etatObjet',$result);
     }
 
 //    gestion des listes etat objet

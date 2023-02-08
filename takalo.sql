@@ -70,7 +70,7 @@
         insert into Images values (null,9,'b7');
 
 ----OBJET_PROPRIETAIRE
-       create table objet_proprietaire (
+       create table2,2,1,0(
            idObjet  INTEGER(50) references categories (idCategories),
            idUtilisateur  INTEGER(50) references categories (idCategories)
        );
@@ -90,4 +90,22 @@
        join objet_proprietaire op on objet.idObjet = op.idObjet
        join utilisateur u on op.idUtilisateur = u.idUtilisateur
        join categories c on objet.idCategories = c.idCategories;
+---- HISTORIQ ECHANGE
+        create table historique_echange
+        (
+            idHistorique   int auto_increment primary key,
+            idObjet1       int  references objet(idObjet),
+            idObjet2       int  references objet(idObjet),
+            idUtilisateur1 int  references utilisateur(idUtilisateur),
+            idUtilisateur2 int  references utilisateur(idUtilisateur),
+            etatEchange int ,
+            dateEchange    date null
+        );
+        insert into  historique_echange values (null,1,2,2,1,0,'2023-02-08');
+        insert into  historique_echange values (null,4,3,3,1,0,'2023-02-08');
+        insert into  historique_echange values (null,9,6,2,1,0,'2023-02-08');
 
+        insert into  historique_echange values (null,1,7,1,3,0,'2023-02-05');
+        insert into  historique_echange values (null,3,8,1,2,0,'2023-02-05');
+
+        insert into  historique_echange values (null,4,6,3,1,0,'2023-02-05');

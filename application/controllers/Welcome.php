@@ -34,18 +34,18 @@ class Welcome extends CI_Controller {
         $this->load->model('Utilisateur');
         $bool = $this->Utilisateur->TologIn($_POST['email'],$_POST['password']);
         if($bool == null){
-            redirect(base_url('welcome/errorLogin/'));
+            redirect('welcome/errorLogin/');
         }else{
             $user = array();
             $user =  $this->Utilisateur->checkConnected($_POST['email'],$_POST['password']);
             $this->session->set_userdata('utilisateur',$user);
-            redirect(base_url('welcome/accueil/'));
+            redirect('welcome/accueil/');
         }
 	}
 //Fonction Deconnexion
 	public function deconnect()	{
         $this->session->unset_userdata('utilisateur');
-        redirect(base_url('welcome/'));
+        redirect('welcome/');
     }
 //Fonction erreur de Login
     public function errorLogin(){
@@ -60,7 +60,7 @@ class Welcome extends CI_Controller {
     {
         $this->load->model('Utilisateur');
         $this->Utilisateur->insertUtilisateur($_POST['nom'],$_POST['email'],$_POST['mdp']);
-        redirect(base_url('welcome/index/'));
+        redirect('welcome/index/');
     }
 //----------------------------------------------LISTOBJET---------------------------------------------------------//
 //Page Accueil
@@ -69,8 +69,24 @@ class Welcome extends CI_Controller {
         $user = $_SESSION['utilisateur'];
         echo $user['nom'];
         $url="objet_controler/ListeObjetAutresUtilisateurs/".$user['idUtilisateur'];
-        redirect(base_url($url));
+        redirect($url);
         }
+//MES PRODUITS
+    public function produit(){
+        $user = array();
+        $user = $_SESSION['utilisateur'];
+        echo $user['nom'];
+        $url="objet_controler/ListeObjetPersonnelUtilisateur/".$user['idUtilisateur'];
+        redirect($url);
+    }
+//MES ECHANGES
+     public function echange(){
+            $user = array();
+            $user = $_SESSION['utilisateur'];
+           // $this->load->view('pages/etatObjet',$user);
+           $url="objet_controler/pageDetailEchanges/".$user['idUtilisateur'];
+           redirect($url);
+     }
 //-----------------------------------------------FORM_USER---------------------------------------------------------//
 //Upload
     public function photo(){$this->load->view('pages/photo');}

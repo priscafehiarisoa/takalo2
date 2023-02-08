@@ -17,7 +17,7 @@ if(!isset($liste)) $liste=array();
                 <div class="search-content">
                     <form action="#" method="get">
                         <input type="search" name="search" id="search" placeholder="Type your keyword...">
-                        <button type="submit"><img src="../assets/img/core-img/search.png" alt=""></button>
+                        <button type="submit"><img src="<?php echo base_url("assets/img/core-img/search.png"); ?> " alt=""></button>
                     </form>
                 </div>
             </div>
@@ -33,7 +33,7 @@ if(!isset($liste)) $liste=array();
     <div class="mobile-nav">
         <!-- Navbar Brand -->
         <div class="amado-navbar-brand">
-            <a href="accueil.html"><img src="../assets/img/core-img/logo.png" alt=""></a>
+            <a href="accueil.html"><img src="<?php echo base_url("assets/img/core-img/logo.png"); ?>" alt=""></a>
         </div>
         <!-- Navbar Toggler -->
         <div class="amado-navbar-toggler">
@@ -110,8 +110,8 @@ if(!isset($liste)) $liste=array();
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
                             <div class="product-img">
-                                <?php $url="/assets/img/product-img/".$liste[$i]->nomImage ?>
-                                <img src="<?php echo site_url($url)?>" alt="">
+                                <?php $url="/assets/img/bg-img/".$liste[$i]->image ?>
+                                <img src="<?php echo base_url($url)?>" alt="">
                                 <p><?php echo $liste[$i]->objet; ?></p>
                                 <!-- Hover Thumb -->
                                 <img class="hover-img" src="<?php echo site_url($url)?>" alt="">
@@ -124,7 +124,7 @@ if(!isset($liste)) $liste=array();
                                     <div class="line"></div>
                                     <p class="product-price">$180</p>
                                     <a href="product-details.html">
-                                        <h6>Modern Chair</h6>
+                                        <h6>Proprietaire : <?php echo $liste[$i]->nom; ?></h6>
                                     </a>
                                 </div>
                                 <!-- Ratings & Cart -->
@@ -156,17 +156,16 @@ if(!isset($liste)) $liste=array();
 <!-- ##### Footer Area Start ##### -->
 <?php $this->load->view('inc/footer')?>
 <!-- ##### Footer Area End ##### -->
-
 <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-<script src="../assets/js/jquery/jquery-2.2.4.min.js"></script>
+<script src="<?php  echo base_url("js/jquery/jquery-2.2.4.min.js"); ?> "></script>
 <!-- Popper js -->
-<script src="../assets/js/popper.min.js"></script>
+<script src="<?php  echo base_url("assets/js/popper.min.js"); ?> "></script>
 <!-- Bootstrap js -->
-<script src="../assets/js/bootstrap.min.js"></script>
+<script src="<?php  echo base_url("assets/js/bootstrap.min.js"); ?> "></script>
 <!-- Plugins js -->
-<script src="../assets/js/plugins.js"></script>
+<script src="<?php  echo base_url("assets/js/plugins.js"); ?>"></script>
 <!-- Active js -->
-<script src="../assets/js/active.js"></script>
+<script src=" <?php echo base_url("assets/js/active.js"); ?>"></script>
 
 </body>
 
