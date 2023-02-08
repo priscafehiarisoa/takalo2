@@ -79,7 +79,6 @@ if(!isset($refus)) $refus=array();
                                 <thead>
                                 <tr class="attr">
                                     <th>Objet échangé</th>
-<!--                                    <th>Info expediteur</th>-->
                                     <th>Vos Objet </th>
                                     <th>Bouton 1</th>
                                     <th>Bouton 2</th>
@@ -103,7 +102,7 @@ if(!isset($refus)) $refus=array();
                                         <br>
                                     </td>
                                     <td>
-                                        <button class="btn amado-btn mb-15" type="submit">Accepter</button>
+                                        <a href="<?php echo site_url("welcome/accept/?idH=".$recu[$i]->idHistorique."&&ido1=".$recu[$i]->idObjet1."&&ido2=".$recu[$i]->idObjet2."&&idu1=".$recu[$i]->idUtilisateur1."&&idu2=".$recu[$i]->idUtilisateur2); ?>"><button class="btn amado-btn mb-15" type="submit">Accepter</button></a>
                                     </td>
                                     <td>
                                         <button class="btn non mb-15" type="submit">Refuser</button>

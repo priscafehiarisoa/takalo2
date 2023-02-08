@@ -13,6 +13,12 @@ class Objet_categorie extends CI_Model{
         }
         return $table;
     }
+    ///INSERT categ
+     public function insertCategorie($categ)
+        {
+            $sql = "insert into categories  values (null,$categ) ";
+            $this->db->query($sql);
+        }
 }
 ?>
 
